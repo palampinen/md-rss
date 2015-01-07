@@ -1,0 +1,30 @@
+
+
+responseData.feed {
+  {
+    title:
+    author:
+    desciption:
+
+    entries: {
+
+      title: 
+      link: "URL" /feed-> comments
+      author: ""
+      publishedDate: "Wed, 26 Nov 2014 07:16:17 -0800"
+      contentSnippet: ""
+      content: ""
+      categories
+    }
+  }
+
+},
+
+responseStatus: 200 //OK
+
+getCategories() 
+
+
+
+
+NEXT: comments
