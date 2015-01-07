@@ -1,0 +1,50 @@
+// bower:scss
+// endbower
+
+
+
+body {background: #fafbfa}
+body,p,h1,h2,h3,h4,h5,select,input,textarea {
+  font-family: 'RobotoDraft','Roboto','Helvetica Neue','Segoe UI','sans-serif'
+}
+
+h1,h2,h3, .md-toolbar-tools h2, .md-toolbar-tools h3 {font-weight:300; }
+
+
+.md-default-theme.main-content {background:transparent;}
+.container {max-width: 1200px; margin: 0 auto; display: block;}
+md-content .pull-up {
+   position: relative;z-index:10;top:-85px;background-color:transparent; 
+  md-card {background: #FFF; position: relative;}
+}
+
+.urlOk {position: absolute;right: 10px;top: 10px; font-size: 30px; opacity: 0.5;
+  .ok {color:green; }
+  .nok {color:red; }
+}
+
+.md-card{
+  padding: 20px;
+  margin-bottom: 15px;
+  form {}
+  form.url {
+    input {width: 100%;}
+    label {font-size: 200%;font-weight: 300;}
+
+  }
+}
+
+.mymd {color:rgba(0,0,0,.4);}
+
+.feed-item {
+  margin-bottom: 50px;
+  h2 {margin:0;color: #2196F3;}
+  .date {color:#888;font-size: 80%; }
+  .read-more-btn {position: absolute;right: 20px;bottom: -30px; font-size: 30px;}
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+}
