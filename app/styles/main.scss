@@ -2,8 +2,13 @@
 // endbower
 
 
+$primary: #E91E63 !default;
+$accent:  #5C6BC0 !default;
+$warn:    #F44336 !default;
 
-body {background: #fafbfa}
+@import "_sidenav.scss";
+
+body {background: #f7f7f7}
 body,p,h1,h2,h3,h4,h5,select,input,textarea {
   font-family: 'RobotoDraft','Roboto','Helvetica Neue','Segoe UI','sans-serif'
 }
@@ -11,36 +16,60 @@ body,p,h1,h2,h3,h4,h5,select,input,textarea {
 h1,h2,h3, .md-toolbar-tools h2, .md-toolbar-tools h3 {font-weight:300; }
 
 
-.md-default-theme.main-content {background:transparent;}
+
+.main-content {background:#f7f7f7;
+  &> .md-default-theme {background: transparent;}
+}
 .container {max-width: 1200px; margin: 0 auto; display: block;}
 md-content .pull-up {
-   position: relative;z-index:10;top:-85px;background-color:transparent; 
-  md-card {background: #FFF; position: relative;}
+  position: relative;z-index:10;top:-85px;background-color:transparent; 
+  md-card {position: relative;}
 }
 
-.urlOk {position: absolute;right: 10px;top: 10px; font-size: 30px; opacity: 0.5;
-  .ok {color:green; }
-  .nok {color:red; }
-}
+.bookshelf {background-image:url(../images/bg.png); background-position: 50% 50%; background-size: cover;}
+.mymd {color:rgba(0,0,0,.4);}
 
+/* CAAARDS */
 .md-card{
+  background: #FFF;
   padding: 20px;
   margin-bottom: 15px;
+}
+
+.url-card {
+  margin-bottom:50px;
+  .urlOk {
+    position: absolute;right: 10px;top: 10px; font-size: 50px; opacity: 0.5;z-index: 10;
+      .ok {color:$accent; }
+      .nok {color:$warn; position: relative;z-index: 2;}
+    }
+
   form {}
   form.url {
     input {width: 100%;}
-    label {font-size: 200%;font-weight: 300;}
+    label {font-size: 200%;font-weight: 300; }
 
   }
 }
 
-.mymd {color:rgba(0,0,0,.4);}
 
 .feed-item {
-  margin-bottom: 50px;
-  h2 {margin:0;color: #2196F3;}
-  .date {color:#888;font-size: 80%; }
-  .read-more-btn {position: absolute;right: 20px;bottom: -30px; font-size: 30px;}
+  background: #FFF; 
+  margin-bottom: 40px;
+  h2 {margin:0;color: $accent;}
+  .meta {color:#999;font-size: 90%;font-weight: 300;margin:5px 0 0;
+    span {display: block;
+      &.author {color:#000;}
+      .icon {margin-right: 25px;font-size: 22px;width: 30px;display:inline-block;text-align: center; color:$accent;}
+    }
+   }
+  .read-more-btn {position: absolute;right: -20px;bottom: -20px; font-size: 30px;
+    width: 43px;height:43px;line-height: 1;
+  }
+  .feed-content {
+    img {max-width: 100%;clear:both;display: block;margin:30px 0 }
+    a {color:$primary; text-decoration: none;}
+  }
 }
 
 

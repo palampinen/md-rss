@@ -19,10 +19,11 @@ angular
     'ngStorage',
     'ngMaterial'
   ])
-  .config(function ($locationProvider, $routeProvider) {
+  .config(function ($locationProvider, $routeProvider,$mdThemingProvider) {
   
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
   
+
 
     $routeProvider
       .when('/', {
@@ -36,4 +37,10 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+
+    $mdThemingProvider.theme('default')
+    .primaryColor('pink')
+    .accentColor('indigo');
+
+
+  })
