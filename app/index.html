@@ -12,8 +12,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 
-    <link rel="icon" href="apple-touch-icon.png" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="icon" sizes="192x192" href="icon-192.png">
+    <link rel="icon" sizes="128x128" href="icon-128.png" />
+    <link rel="apple-touch-icon" href="icon-128.png" />
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -33,15 +35,15 @@
     </md-sidenav>
 
 <div role="main" layout-fill layout="column" class="main-content">
-  <md-content >
+  <md-content layout-fill>
     <div layout-fill layout="column">
-      <md-toolbar class="md-tall bookshelf" layout="row" md-scroll-shrink>
+      <md-toolbar class="md-tall bookshelf" layout="row">
           <div class="md-toolbar-tools">
 
             <div ng-click="toggleLeft()"><h2><span class="mymd">&bull;&bull;&bull;  MD</span> Reader</h2></div>
             <div flex></div>
-            <md-button class="" href aria-label="Share Blog" class="menu-icon">
-              Share
+            <md-button class="mymd" ng-click="showBottomSheet()" aria-label="Share Blog" class="menu-icon">
+              <i class="icon ion-ios-paperplane-outline"></i> Share
               <md-tooltip>
                 Share your list
               </md-tooltip>
@@ -49,11 +51,11 @@
           </div>
        </md-toolbar>
 
-      <md-content class="md-padding pull-up main-content" >
+      <div class="md-padding pull-up main-content" >
         <div class="container" >
           <div ng-view=""></div>
         </div>
-      </md-content>
+      </div>
   </div>
   </md-content>
 </div>

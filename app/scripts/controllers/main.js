@@ -8,11 +8,11 @@
  * Controller of the materialogApp
  */
 angular.module('materialogApp')
-  .controller('MainCtrl', function ($rootScope, $scope,$timeout,$localStorage,Blog) {
+  .controller('MainCtrl', function ($rootScope, $scope,$timeout,$location,$localStorage,Blog) {
 
   if(!$localStorage.blogs) $localStorage.blogs = [];
   $scope.current = $localStorage.currentBlog&&parseInt($localStorage.currentBlog) ? $localStorage.currentBlog : 0;
-  $scope.url = $localStorage.blogs&&$localStorage.blogs.length && $localStorage.blogs[$scope.current].url ? $localStorage.blogs[$scope.current].url : '';
+  $scope.url = $localStorage.blogs&&$localStorage.blogs.length && $localStorage.blogs[$scope.current] && $localStorage.blogs[$scope.current].url ? $localStorage.blogs[$scope.current].url : '';
 
 
 
@@ -33,7 +33,11 @@ angular.module('materialogApp')
 */
     var promise;
     $scope.$watch('url',function(newVal,oldVal){
-      if(newVal) $scope.loading = true;
+      if(newVal) 
+        $scope.loading = true;
+      
+      // clear feed
+        $scope.feed = {};
 
       $timeout.cancel(promise)
       promise = $timeout(function(){ getFeed(newVal)},2000)
@@ -75,14 +79,15 @@ angular.module('materialogApp')
 
         var duplicate = _.find($localStorage.blogs, function(blog){ return blog.url==feedUrl });
 
+
         if(!duplicate)
         $localStorage.blogs.push({
-          url:feedUrl,
+          url:feed.data.responseData.feed.feedUrl,
           link:feed.data.responseData.feed.link,
           title:feed.data.responseData.feed.title
         });
 
-
+      console.log(feed.data.responseData)
 
         // get feed
         Blog.parseFeed( feedUrl, 30).then(function(feed){
@@ -113,6 +118,29 @@ angular.module('materialogApp')
       }
     
 
+// Get urls from parameter on load
+
+    //var urls = gup('url').split(',');
+    if( $location.search().urls ) {
+      var urls = $location.search().urls.split(',');
+      
+      _.map(urls,function(url,i){
+        if(url){
+          $timeout(function() {
+            getFeed(url)
+          },10);
+        }
+
+        if(i+1 >= urls.length)
+          $timeout(function() {
+            delete $location.$$search.urls;
+            $location.$$compose();
+            //$location.path('/',false)
+          },1000);
+
+      });
+
+    }
 
 
 

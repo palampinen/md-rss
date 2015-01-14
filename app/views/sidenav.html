@@ -18,7 +18,7 @@
         <ul class="menu">
           <li ng-repeat="(id,blog) in blogs">
             <button class="menu-item menu-title md-menu-item" md-ink-ripple="#bbb" ng-click="blogFunctions.select(id)" md-highlight="active(blog.url)">
-              {{blog.title}}
+              <span class="text">{{blog.title}}</span>
 
       
             </button>

@@ -16,18 +16,19 @@ body,p,h1,h2,h3,h4,h5,select,input,textarea {
 h1,h2,h3, .md-toolbar-tools h2, .md-toolbar-tools h3 {font-weight:300; }
 
 
-
 .main-content {background:#f7f7f7;
-  &> .md-default-theme {background: transparent;}
+  &>md-content.md-default-theme {background: transparent;}
 }
 .container {max-width: 1200px; margin: 0 auto; display: block;}
-md-content .pull-up {
+.pull-up {
   position: relative;z-index:10;top:-85px;background-color:transparent; 
   md-card {position: relative;}
 }
 
 .bookshelf {background-image:url(../images/bg.png); background-position: 50% 50%; background-size: cover;}
-.mymd {color:rgba(0,0,0,.4);}
+.mymd {color:rgba(0,0,0,.4) !important;
+  .icon {font-size: 130%;}
+}
 
 /* CAAARDS */
 .md-card{
@@ -57,6 +58,12 @@ md-content .pull-up {
   background: #FFF; 
   margin-bottom: 40px;
   h2 {margin:0;color: $accent;}
+  .categories {
+    float: right;
+    margin:0;
+    span {display: inline-block; margin:0 5px 5px 0;background:$primary;padding:5px 10px;color:#FFF; }
+
+  }
   .meta {color:#999;font-size: 90%;font-weight: 300;margin:5px 0 0;
     span {display: block;
       &.author {color:#000;}
@@ -72,8 +79,14 @@ md-content .pull-up {
   }
 }
 
+.bgicon {font-size: 10vmin; position: absolute;color: $accent; z-index: 0; left:1%; top:1%;opacity:0.8;}
+#share-url {position:relative;z-index:1; min-height: 200px; margin: 20px auto; width:100%; display: block; background: rgba(255,255,255,.4); border: 0;padding:20px;color:#888;font-size: 70%; }
+
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-
+@media screen and (max-width: 768px) {
+  .feed-item {
+    margin:0 20px 40px;
+    .read-more-btn {right: 20px;}
+  }
 }

@@ -23,6 +23,7 @@ angular.module('materialogApp')
           });
       },
       select: function(id){
+        $mdSidenav('left').close();
         $localStorage.currentBlog=id;
         $rootScope.url = $localStorage.blogs[id].url;
       },
@@ -35,7 +36,9 @@ angular.module('materialogApp')
 
     }
 
+
     $scope.active = function(url) {
+      if(!url) return false;
       return $rootScope.url == url
     }
 

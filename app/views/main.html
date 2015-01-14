@@ -2,7 +2,7 @@
 <md-card class="md-card url-card">
 
   <span class="urlOk">
-    <i class="ok icon ion-ios-checkmark-outline" ng-if="!loading&&status"></i>
+    <i class="ok icon ion-ios-checkmark-outline" ng-click="clear()" ng-if="!loading&&status"></i>
     <i class="nok icon ion-ios-close-outline" ng-click="clear()" ng-if="url!==''&&!loading&&status===false"></i>
     <md-progress-circular ng-if="loading" class="md-accent" md-mode="indeterminate"></md-progress-circular>
   </span>
@@ -15,12 +15,16 @@
 
 <md-card class="md-card feed-item" ng-repeat="item in feed.entries" ng-show="!loading">
   <h2 class="md-primary">{{item.title}}</h2>
+
   <h3 class="meta"> 
     <span ng-if="item.author" class="author"><i class="icon ion-ios-person"></i> {{item.author}}</span>
     <span ng-if="item.publishedDate && item.publishedDate!='Invalid date'"><i class="icon ion-ios-clock"></i> {{item.publishedDate}}</span>
   </h3>
   <p ng-show="!open">{{item.contentSnippet}}</p>
   <div ng-if="open" class="feed-content" ng-bind-html="item.content"></div>
+  
+  <h5 class="categories" ng-if="item.categories.length"><span ng-repeat="category in item.categories"><i class="ion-ios-pricetag-outline"></i> {{category}}</span></h5>
+
   <md-button ng-click="open=!open" class="md-fab read-more-btn md-accent" aria-label="Toggle Blog Item" class="menu-icon">
       <i ng-if="!open" class="ion-ios-plus-empty"></i>
       <i ng-if="open" class="ion-ios-close-empty"></i>
